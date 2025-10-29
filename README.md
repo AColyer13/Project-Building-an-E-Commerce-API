@@ -418,73 +418,6 @@ GET /products?category=Electronics&min_price=50&max_price=200
 - Cascade deletion for user and related orders
 - Comprehensive logging for debugging
 
-## Database Verification
-
-After running the Flask application, verify table creation in MySQL Workbench:
-
-### Verify Tables
-```sql
-USE ecommerce_api;
-SHOW TABLES;
-```
-
-### View Table Structures
-```sql
-DESCRIBE users;
-DESCRIBE products;
-DESCRIBE orders;
-DESCRIBE order_product;
-```
-
-### Check Data
-```sql
-SELECT * FROM users;
-SELECT * FROM products;
-SELECT * FROM orders;
-```
-
-### View Orders with Customer Information
-```sql
-SELECT 
-    o.id as order_id,
-    o.order_date,
-    o.status,
-    o.total_amount,
-    u.name as customer_name,
-    u.email
-FROM orders o 
-JOIN users u ON o.user_id = u.id;
-```
-
-### View Products in Orders
-```sql
-SELECT 
-    o.id as order_id,
-    u.name as customer,
-    p.product_name,
-    p.price
-FROM orders o
-JOIN users u ON o.user_id = u.id
-JOIN order_product op ON o.id = op.order_id
-JOIN products p ON op.product_id = p.id
-ORDER BY o.id;
-```
-
-### System Metrics
-```sql
-SELECT 
-    'Total Users' as metric, COUNT(*) as count FROM users
-UNION ALL
-SELECT 
-    'Total Products' as metric, COUNT(*) as count FROM products
-UNION ALL
-SELECT 
-    'Total Orders' as metric, COUNT(*) as count FROM orders
-UNION ALL
-SELECT 
-    'Total Order-Product Links' as metric, COUNT(*) as count FROM order_product;
-```
-
 ### Real-Time Monitoring
 
 Keep MySQL Workbench open during testing:
@@ -587,3 +520,4 @@ except Exception as e:
 ---
 
 *This project demonstrates Flask, SQLAlchemy, database relationship design, and RESTful API development principles.*
+
