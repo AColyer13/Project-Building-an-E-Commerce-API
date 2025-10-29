@@ -1,0 +1,18 @@
+# E-Commerce API Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core Flask framework
+Flask==2.3.3
+
+# Database ORM and integration
+SQLAlchemy==2.0.23
+Flask-SQLAlchemy==3.0.5
+mysql-connector-python==8.1.0
+
+# Data validation and serialization
+marshmallow==3.20.1
+Flask-Marshmallow==0.15.0
+marshmallow-sqlalchemy==0.29.0
+
+# HTTP client for API testing
+requests==2.31.0
